@@ -7,9 +7,21 @@ public class PlayerController : MonoBehaviour
 	public float ScrollSpeed = 28;
 	public float RotateSpeed = 50;
 	public Transform CameraBoom;
+	private Quaternion OriginalBoomRotation;
+	private Quaternion OriginalCameraRotation;
+
+	void Start()
+	{
+		OriginalBoomRotation = CameraBoom.transform.rotation;
+		OriginalCameraRotation = Camera.main.transform.rotation;
+	}
 
 	void Update()
 	{
+		if (Input.GetKeyDown (KeyCode.Backspace)) {
+			ResetRotation();
+		}
+
 		if (Input.GetKey(KeyCode.Q)) {
 			CameraBoom.Rotate(new Vector3(0, -RotateSpeed * Time.deltaTime, 0));
 		}
@@ -32,5 +44,11 @@ public class PlayerController : MonoBehaviour
 
 			CameraBoom.Translate(vec);
 		}
+	}
+
+	private void ResetRotation()
+	{
+		CameraBoom.rotation = OriginalBoomRotation;
+		Camera.main.transform.rotation = OriginalCameraRotation;
 	}
 }

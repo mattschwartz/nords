@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TaskManager : MonoBehaviour {
+public class TurnToFaceCamera : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -10,6 +10,7 @@ public class TaskManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		transform.LookAt(Camera.main.transform.position);
+		transform.Rotate(new Vector3(0, 180, 0));
 	}
 }
