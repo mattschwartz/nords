@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SelectorController : MonoBehaviour 
+public class SelectorHighlighterController : MonoBehaviour 
 {
 	public float RotationSpeed = 7;
 
