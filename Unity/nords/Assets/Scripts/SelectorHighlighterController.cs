@@ -22,6 +22,7 @@ public class SelectorHighlighterController : MonoBehaviour
 			return;
 		}
 		
+		transform.parent = other.transform;
 		gameObject.SetActive(true);
 		Vector3 newPos = other.transform.position;
 

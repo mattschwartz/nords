@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class HarvesterUnitController : MonoBehaviour 
@@ -8,6 +9,9 @@ public class HarvesterUnitController : MonoBehaviour
 	public int MaxLoad;
 	public Transform ResourceLocation;
 	public Transform HomeBaseLocation;
+	public Text textName;
+	public Text textActivity;
+	public Text textCarryLoad;
 
 	private bool Working;
 	public float CurrentLoad;
@@ -20,6 +24,26 @@ public class HarvesterUnitController : MonoBehaviour
 	{
 		Agent = GetComponent<NavMeshAgent>();
 		WaitPosition = transform.position;
+	}
+
+	void FixedUpdate()
+	{
+		textName.text = gameObject.name;
+		textActivity.text = "Current Task: ";
+		textCarryLoad.text = "Carrying: " + (int)CurrentLoad + "/" + MaxLoad;
+
+		if (Working) {
+			switch (CurrentInstruction) {
+				case Instructions.harvest:
+					textActivity.text += "Gathering";
+					break;
+				case Instructions.deposit:
+					textActivity.text += "Deposit Resources";
+				break;
+			}
+		} else {
+			textActivity.text += "Nothing";
+		}
 	}
 
 	void Update()

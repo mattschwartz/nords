@@ -28,10 +28,4 @@ public class InspectableObjectComponent : MonoBehaviour
             Canvas.enabled = false;
         }
     }
-
-	// void OnMouseExit()
-	// {if(Canvas)
- //        Canvas.enabled = false;
- //        PlayerSelectorController.Instance.SetSelectedObject(null);
-	// }
 }

@@ -41,8 +41,9 @@ public class PlayerSelectorController : MonoBehaviour
         Selector.SetSelectedObject(other);
     }
 
-    private void ClearFocus()
+    public void ClearFocus()
     {
+        Selector.SetSelectedObject(null);
         if (!SelectedObject) { return; }
 
         var inspectable = SelectedObject.GetComponent<InspectableObjectComponent>();
@@ -50,5 +51,7 @@ public class PlayerSelectorController : MonoBehaviour
         if (inspectable != null) {
             inspectable.LostFocus();
         }
+        
+        SelectedObject = null;
     }
 }
